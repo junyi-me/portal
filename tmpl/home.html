@@ -7,8 +7,13 @@
 </head>
 
 <body>
-  <h1>Portal</h1>
+  <h1>On this domain</h1>
+  {{template "links" .Hosted}}
+  <h1>External</h1>
+  {{template "links" .External}}
+</body>
 
+{{define "links"}}
   <table>
     <thead>
       <tr>
@@ -20,7 +25,10 @@
       {{ range . }}
       <tr>
         <td>
-          <a href="{{ .URL }}">{{ .Text }}</a>
+          <div>
+            <img src="{{ .Favicon }}" alt="🌐" width="16" height="16">
+            <a href="{{ .URL }}">{{ .Text }}</a>
+          </div>
         </td>
         <td>
           {{ .Description }}
@@ -29,13 +37,19 @@
       {{ end }}
     </tbody>
   </table>
-</body>
+{{end}}
 
 <style>
   body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+  }
+
+  @media (max-width: 800px) {
+    table {
+      width: 100%;
+    }
   }
 
   h1 {
@@ -46,12 +60,19 @@
   table {
     margin: 0 auto;
     border-collapse: collapse;
-    width: 80%;
+    min-width: 80%;
   }
 
   td, th {
     padding: 10px;
     border: 1px solid #ddd;
+    width: 50%;
+  }
+
+  td div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
   a {
