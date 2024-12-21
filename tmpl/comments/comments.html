@@ -1,0 +1,18 @@
+{{ range .Comments }}
+<div class="comment">
+  <p>{{ .Text }}</p>
+  <p class="meta">By {{ .Name }} on {{ .Date.Format "2006-01-02 15:04:05" }}</p>
+
+  {{ if $.LoggedIn }}
+  <div class="action">
+    <button>Like</button>
+    <br />
+    <form>
+      <textarea></textarea>
+      <button type="submit">Reply</button>
+    </form>
+  </div>
+  {{ end }}
+</div>
+{{ end }}
+
