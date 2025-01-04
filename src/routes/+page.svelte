@@ -1,6 +1,4 @@
 <script lang="ts">
-  import '@fortawesome/fontawesome-free/css/all.min.css'
-
   type LinkType = {
     url: string;
     text: string;
@@ -60,11 +58,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #fff;
+    color: var(--fg-1);
   }
 
   a:link, a:visited {
-    color: #fff;
+    color: var(--fg-1);
   }
 
   .title {
@@ -78,7 +76,7 @@
 
   .title h3 {
     font-size: 1.5rem;
-    color: #BEBEBE;
+    color: var(--fg-2);
   }
 
   h1 {
@@ -117,7 +115,7 @@
     background: rgba(0, 0, 0, 0.5);
     width: 6em;
     padding: 6px 8px;
-    border: 1px solid #fff;
+    border: 2px solid var(--fg-1);
     border-radius: 20px;
   }
 
@@ -152,3 +150,4 @@
     backdrop-filter: blur(5px);
   }
 </style>
+

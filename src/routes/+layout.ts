@@ -1,3 +1,5 @@
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 // server-side rendering
 // false = single-page application
 export const ssr = false;
