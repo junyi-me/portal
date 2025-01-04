@@ -49,6 +49,13 @@
       {/each}
     </div>
   </div>
+
+  <div class="credits">
+    <p>
+      Backdrop by <a href="https://wallpapersafari.com/user/jtucker33/">Jessica</a> 
+      on <a href="https://wallpapersafari.com/minecraft-gif-wallpapers/#oGMpdV">WallpaperSafari</a>
+    </p>
+  </div>
 </div>
 
 <style>
@@ -148,6 +155,18 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
+  }
+
+  .credits {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1em;
+    color: var(--fg-2);
+  }
+
+  .credits a {
+    text-decoration: underline;
   }
 </style>
 
