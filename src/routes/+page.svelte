@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-
   type LinkType = {
     url: string;
     text: string;
@@ -21,13 +19,12 @@
     { url: "mailto:junyi.wang.007@gmail.com", icon: "envelope", iconType: "solid" },
   ];
 
-  onMount(() => {
-    requestAnimationFrame(() => {
-      const links = document.querySelectorAll<HTMLAnchorElement>(".links a");
-      const maxWidth = Math.max(...Array.from(links).map((link) => link.clientWidth));
-      links.forEach((link) => {
-        link.style.width = `${maxWidth}px`;
-      });
+  let linkEles = $state<HTMLAnchorElement[]|null[]>(links.map(() => null));
+  $effect(() => {
+    if (linkEles.some((ele) => !ele)) return;
+    const maxWidth = Math.max(...Array.from(linkEles).map((link) => link!.clientWidth));
+    linkEles.forEach((link) => {
+      link!.style.width = `${maxWidth}px`;
     });
   });
 </script>
@@ -43,8 +40,8 @@
   </div>
   <div class="section">
     <div class="links">
-      {#each links as link}
-        <a href={link.url}>{link.text}</a>
+      {#each links as link, i}
+        <a href={link.url} bind:this={linkEles[i]}>{link.text}</a>
       {/each}
     </div>
   </div>
