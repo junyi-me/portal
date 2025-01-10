@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   type LinkType = {
     url: string;
     text: string;
@@ -18,6 +20,15 @@
     { url: "https://www.linkedin.com/in/junyi-wang-976a94199", icon: "linkedin" },
     { url: "mailto:junyi.wang.007@gmail.com", icon: "envelope", iconType: "solid" },
   ];
+
+  onMount(() => {
+    const links = document.querySelectorAll(".links a");
+    const maxWidth = Math.max(...Array.from(links).map((link) => link.clientWidth));
+    links.forEach((link) => {
+      // @ts-ignore
+      link.style.width = `${maxWidth}px`;
+    });
+  });
 </script>
 
 <div class="backdrop">
@@ -32,20 +43,16 @@
   <div class="section">
     <div class="links">
       {#each links as link}
-        <div class="link">
-          <a href={link.url}>{link.text}</a>
-        </div>
+        <a href={link.url}>{link.text}</a>
       {/each}
     </div>
   </div>
   <div class="section">
     <div class="ext-links">
       {#each socials as link}
-        <div class="link">
-          <a href={link.url} aria-label="link">
-            <i class="{link.iconType ? `fa-${link.iconType}` : "fab"} fa-{link.icon}"></i>
-          </a>
-        </div>
+        <a href={link.url} aria-label="link">
+          <i class="{link.iconType ? `fa-${link.iconType}` : "fab"} fa-{link.icon}"></i>
+        </a>
       {/each}
     </div>
   </div>
@@ -66,6 +73,10 @@
     align-items: center;
     height: 100vh;
     color: var(--fg-1);
+  }
+
+  .links a {
+    text-align: center;
   }
 
   a:link, a:visited {
@@ -102,6 +113,7 @@
 
   a {
     text-decoration: none;
+    transition: color 0.3s, border-color 0.3s;
   }
 
   .section {
@@ -112,26 +124,43 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
   }
 
-  .links .link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
-    width: 6em;
-    padding: 6px 8px;
-    border: 2px solid var(--fg-1);
-    border-radius: 20px;
+  .links {
+    gap: 1em;
+  }
+
+  .ext-links {
+    gap: 2em;
+  }
+
+  .links a {
+    padding: 0.5em  1em;
+    border: 1.5px solid var(--fg-1);
+    border-radius: 2em;
+    font-weight: 800;
+    transition: background-color 0.2s;
+  }
+
+  .links a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
   }
 
   .ext-links .link {
     padding: 6px 8px;
+    transition: color 0.2s;
   }
 
-  .ext-links .link i {
+  .ext-links .link:hover {
+    color: var(--fg-2);
+  }
+
+  .ext-links i {
     font-size: 1.5rem;
+  }
+
+  .ext-links a:hover {
+    color: var(--fg-2);
   }
 
   .backdrop {
