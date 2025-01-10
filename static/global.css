@@ -1,3 +1,7 @@
+* {
+    transition: color 0.3s, border-color 0.3s;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,5 +11,14 @@ body {
     --fg-2: #BEBEBE;
     --bg-1: #000000;
     --bg-2: #1C1C1C;
+
+    --accent: rgb(174, 33, 217);
+    --accent-alpha: rgba(174, 33, 217, 0.3);
+    --accent-light: rgb(255, 204, 255);
+}
+
+::selection {
+    color: var(--accent-light);
+    background: var(--accent-alpha);
 }
 

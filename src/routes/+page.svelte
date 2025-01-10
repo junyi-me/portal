@@ -29,6 +29,10 @@
   });
 </script>
 
+<svelte:head>
+  <title>Portal</title>
+</svelte:head>
+
 <div class="backdrop">
   <img src="/backdrop.gif" alt="backdrop" width="100%" height="100%">
   <div></div>
@@ -111,7 +115,6 @@
 
   a {
     text-decoration: none;
-    transition: color 0.3s, border-color 0.3s;
   }
 
   .section {
@@ -137,11 +140,12 @@
     border: 1.5px solid var(--fg-1);
     border-radius: 2em;
     font-weight: 800;
-    transition: background-color 0.2s;
   }
 
-  .links a:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+  a:hover {
+    background-color: var(--accent-alpha);
+    border-color: var(--accent);
+    color: #ffccff;
   }
 
   .ext-links .link {
@@ -158,7 +162,7 @@
   }
 
   .ext-links a:hover {
-    color: var(--fg-2);
+    color: var(--accent-light);
   }
 
   .backdrop {
