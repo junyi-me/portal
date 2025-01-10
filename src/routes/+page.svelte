@@ -19,19 +19,8 @@
     { url: "mailto:junyi.wang.007@gmail.com", icon: "envelope", iconType: "solid" },
   ];
 
-  let linkEles = $state<HTMLAnchorElement[]|null[]>(links.map(() => null));
-  $effect(() => {
-    if (linkEles.some((ele) => !ele)) return;
-    const maxWidth = Math.max(...Array.from(linkEles).map((link) => link!.clientWidth));
-    linkEles.forEach((link) => {
-      link!.style.width = `${maxWidth}px`;
-    });
-  });
+  const linkWidth = links.map(link => link.text.length * 0.5).reduce((a, b) => a + b, 0);
 </script>
-
-<svelte:head>
-  <title>Portal</title>
-</svelte:head>
 
 <div class="backdrop">
   <img src="/backdrop.gif" alt="backdrop" width="100%" height="100%">
@@ -44,8 +33,8 @@
   </div>
   <div class="section">
     <div class="links">
-      {#each links as link, i}
-        <a href={link.url} bind:this={linkEles[i]}>{link.text}</a>
+      {#each links as link}
+        <a href={link.url} style="width: {linkWidth}em">{link.text}</a>
       {/each}
     </div>
   </div>
