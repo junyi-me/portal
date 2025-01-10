@@ -22,11 +22,12 @@
   ];
 
   onMount(() => {
-    const links = document.querySelectorAll(".links a");
-    const maxWidth = Math.max(...Array.from(links).map((link) => link.clientWidth));
-    links.forEach((link) => {
-      // @ts-ignore
-      link.style.width = `${maxWidth}px`;
+    requestAnimationFrame(() => {
+      const links = document.querySelectorAll<HTMLAnchorElement>(".links a");
+      const maxWidth = Math.max(...Array.from(links).map((link) => link.clientWidth));
+      links.forEach((link) => {
+        link.style.width = `${maxWidth}px`;
+      });
     });
   });
 </script>
