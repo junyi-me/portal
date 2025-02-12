@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - stg
 
 env:
   DOCKER_REPO: ${{ secrets.DOCKER_USERNAME }}/portal
