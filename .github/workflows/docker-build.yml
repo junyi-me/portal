@@ -8,6 +8,7 @@ on:
 
 env:
   DOCKER_REPO: ${{ secrets.DOCKER_USERNAME }}/portal
+  BRANCH_NAME: ${{ github.ref_name }}
 
 jobs:
   build:
