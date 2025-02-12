@@ -49,10 +49,8 @@
   </div>
 
   <div class="credits">
-    <p>
-      Backdrop by <a href="https://wallpapersafari.com/user/jtucker33/">Jessica</a> 
-      on <a href="https://wallpapersafari.com/minecraft-gif-wallpapers/#oGMpdV">WallpaperSafari</a>
-    </p>
+    Backdrop by <a href="https://wallpapersafari.com/user/jtucker33/">Jessica</a> 
+    on <a href="https://wallpapersafari.com/minecraft-gif-wallpapers/#oGMpdV">WallpaperSafari</a>
   </div>
 </div>
 
